@@ -30,13 +30,3 @@ def p04
     h
   end
 end
-
-def p05_char
-  char_bigram("I am an NLPer")
-end
-def p05_word
-  word_bigram("I am an NLPer")
-end
-def char_bigram(str)
-
-end

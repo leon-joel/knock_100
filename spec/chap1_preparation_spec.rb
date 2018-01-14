@@ -33,7 +33,4 @@ describe '第1章: 準備運動' do
                        "Si" => 14,
                       })
   end
-  it "05. n-gram" do
-    expect(p05).to eq []
-  end
 end
