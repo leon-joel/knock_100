@@ -11,20 +11,23 @@ end
 
 # 文字N-Gram
 def char_ngram(n, str)
-  str.scan(/\w+/).inject([]) do |a, s|
-    a.concat(split_n_char(n, s))
+  str.scan(/\w+/).inject(Set.new) do |grams, word|
+    each_n_char(n, word) do |g|
+      grams.add(g)
+    end
+    grams
   end
 end
-def split_n_char(n, word)
+
+# 単語をn-gramに分割
+def each_n_char(n, word)
   return enum_for(__method__, n, word) unless block_given?
 
   if word.length <= n
-    yield(word)
+    return yield(word)
   end
 
-  ary = []
   0.upto word.length-n do |i|
-    ary << word[i, n]
+    yield(word[i, n])
   end
-  ary
 end
