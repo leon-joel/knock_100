@@ -33,3 +33,31 @@ def word_ngram(n, str)
     yield(words[i, n].join(" "))
   end
 end
+
+class P06
+  attr_reader :bigram_x, :bigram_y
+  def initialize(word_x, word_y)
+    @bigram_x = char_ngram(2, word_x)
+    @bigram_y = char_ngram(2, word_y)
+  end
+
+  def union
+    @bigram_x.union(@bigram_y)
+  end
+
+  def intersection
+    @bigram_x.intersection @bigram_y
+  end
+
+  def difference
+    @bigram_x.difference @bigram_y
+  end
+
+  def x_include?(gram)
+    @bigram_x.include?(gram)
+  end
+
+  def y_include?(gram)
+    @bigram_y.include?(gram)
+  end
+end

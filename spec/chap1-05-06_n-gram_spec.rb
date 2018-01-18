@@ -1,4 +1,4 @@
-require_relative '../chap1-05_n-gram'
+require_relative '../chap1-05-06_n-gram'
 
 describe '第1章: 準備運動' do
   describe "05. n-gram" do
@@ -28,6 +28,26 @@ describe '第1章: 準備運動' do
       expect(word_ngram(1, "I am an NLPer").sort).to eq %w(I am an NLPer).sort
       expect(word_ngram(2, "I am an NLPer").sort).to eq ["I am", "am an", "an NLPer"].sort
       expect(word_ngram(5, "I am an NLPer").sort).to eq ["I am an NLPer"].sort
+    end
+  end
+
+  describe "06. 集合" do
+    let(:p06) { P06.new("paraparaparadise", "paragraph") }
+
+    it "char_ngram X and Y" do
+      expect(p06.bigram_x.sort).to eq ["pa", "ar", "ra", "ap", "ad", "di", "is", "se"].sort
+      expect(p06.bigram_y.sort).to eq ["pa", "ar", "ra", "ag", "gr", "ap", "ph"].sort
+    end
+
+    it "union/intersection/difference" do
+      expect(p06.union.sort).to eq ["ad", "ag", "ap", "ar", "di", "gr", "is", "pa", "ph", "ra", "se"].sort
+      expect(p06.intersection.sort).to eq ["ap", "ar", "pa", "ra"].sort
+      expect(p06.difference.sort).to eq ["ad", "di", "is", "se"].sort
+    end
+
+    it "include?" do
+      expect(p06.x_include?("se")).to be_truthy
+      expect(p06.y_include?("se")).to be_falsey
     end
   end
 end
