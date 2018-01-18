@@ -12,10 +12,7 @@ end
 # 文字N-Gram
 def char_ngram(n, str)
   str.scan(/\w+/).inject(Set.new) do |grams, word|
-    each_n_char(n, word) do |g|
-      grams.add(g)
-    end
-    grams
+    grams.merge(each_n_char(n, word))
   end
 end
 
