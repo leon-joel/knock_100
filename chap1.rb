@@ -41,3 +41,13 @@ def cipher(str)
     (219 - c.ord).chr
   end
 end
+
+# 09. Typoglycemia
+def p09(str)
+  # ' や . も単語（の一部）として扱うために、\S に変更した
+  str.gsub(/\S+/) {|w| typoglycemia(w)}
+end
+def typoglycemia(word)
+  return word if word.length <= 4
+  "#{word[0]}#{word[1..-2].chars.shuffle.join}#{word[-1]}"
+end
