@@ -33,4 +33,16 @@ describe '第1章: 準備運動' do
                        "Si" => 14,
                       })
   end
+  it "07. テンプレートによる文生成" do
+    expect(p07(12, "気温", 22.4)).to eq "12時の気温は22.4"
+  end
+  it "08. 暗号文" do
+    expect("a".ord).to eq 97
+    expect(97.chr).to eq "a"
+    expect(cipher("a")).to eq "z"
+    expect(cipher("z")).to eq "a"
+    expect(cipher("AaBbCcXxYyZz")).to eq "AzByCxXcYbZa"
+    expect(cipher("The quick brown fox jumps over the lazy dog")).to eq "Tsv jfrxp yildm ulc qfnkh levi gsv ozab wlt"
+    expect(cipher("")).to eq ""
+  end
 end

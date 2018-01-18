@@ -30,3 +30,14 @@ def p04
     h
   end
 end
+
+def p07(x, y, z)
+  "#{x}時の#{y}は#{z}"
+end
+
+# p08
+def cipher(str)
+  str.gsub(/[a-z]/) do |c|
+    (219 - c.ord).chr
+  end
+end
