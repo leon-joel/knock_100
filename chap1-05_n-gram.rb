@@ -1,14 +1,5 @@
 include Enumerable
 
-def p05_char
-  char_bigram("I am an NLPer")
-end
-def p05_word
-  word_bigram("I am an NLPer")
-end
-
-
-
 # 文字N-Gram
 def char_ngram(n, str)
   str.scan(/\w+/).inject(Set.new) do |grams, word|
@@ -26,5 +17,19 @@ def each_n_char(n, word)
 
   0.upto word.length-n do |i|
     yield(word[i, n])
+  end
+end
+
+# 単語n-gram
+def word_ngram(n, str)
+  return enum_for(__method__, n, str) unless block_given?
+
+  words = str.scan(/\w+/)
+  if words.length <= n
+    return yield words.join(" ")
+  end
+
+  0.upto words.length-n do |i|
+    yield(words[i, n].join(" "))
   end
 end

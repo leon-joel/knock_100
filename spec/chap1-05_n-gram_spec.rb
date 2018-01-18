@@ -19,9 +19,15 @@ describe '第1章: 準備運動' do
     end
 
     it "char_ngram" do
-      expect(char_ngram(1, "I am an NLPer").to_a.sort).to eq ["I", "a", "m", "n", "N", "L", "P", "e", "r"].sort
-      expect(char_ngram(2, "I am an NLPer").to_a.sort).to eq ["I", "am", "an", "NL", "LP", "Pe", "er"].sort
+      expect(char_ngram(1, "I am an NLPer").sort).to eq %w(I a m n N L P e r).sort
+      expect(char_ngram(2, "I am an NLPer").sort).to eq ["I", "am", "an", "NL", "LP", "Pe", "er"].sort
+      expect(char_ngram(6, "I am an NLPer").sort).to eq ["I", "am", "an", "NLPer"].sort
+    end
+
+    it "word_ngram" do
+      expect(word_ngram(1, "I am an NLPer").sort).to eq %w(I am an NLPer).sort
+      expect(word_ngram(2, "I am an NLPer").sort).to eq ["I am", "am an", "an NLPer"].sort
+      expect(word_ngram(5, "I am an NLPer").sort).to eq ["I am an NLPer"].sort
     end
   end
 end
-
