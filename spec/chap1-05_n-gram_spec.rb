@@ -1,4 +1,4 @@
-require_relative '../chap1_preparation_n-gram'
+require_relative '../chap1-05_n-gram'
 
 describe '第1章: 準備運動' do
   describe "05. n-gram" do

@@ -1,4 +1,4 @@
-require_relative "../chap1_preparation"
+require_relative "../chap1"
 
 describe '第1章: 準備運動' do
   it '00. 文字列の逆襲' do
